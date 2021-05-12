@@ -86,9 +86,6 @@ def comparador():
         print(f"O valor {n2} é menor do que {n1}")
     else:
         print(f"O valores {n1} e {n2} são iguais")
-
-
-
 comparador()
 print("Hello")
 
