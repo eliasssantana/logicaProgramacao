@@ -141,7 +141,7 @@ Hospedagem
 1 - Crie uma função chamada 'custo_hotel' que receba um parâmetro (argumento) chamado 'noites' e retorne o custo total do hotel, sendo que 1 noite custa R$ 140,00.
 
 '''
-custo_hotel = lambda noites: print(f"Ok! então o custo total do hotel será de:\nR${(noites * 140):.2f}")
+#custo_hotel = lambda noites: print(f"Ok! então o custo total do hotel será de:\nR${(noites * 140):.2f}")
 '''
 noites = int(input("Quantas noite você passará no hotel:\n"))
 
@@ -158,15 +158,20 @@ Passagem
 
 '''
 def custo_aviao(cidade):
+    global passagem
     cidad = cidade.upper()
     if (cidad == "SÃO PAULO"):
         print("O custo total da passagem é de R$312,00")
+        passagem = 312
     elif (cidad == "PORTO ALEGRE"):
         print("O custo total da passagem é de R$447,00")
+        passagem = 447
     elif (cidad == "RECIFE"):
         print("O custo total da passagem é de R$831,00")
+        passagem = 831
     elif (cidad == "MANAUS"):
         print("O custo total da passagem é de R$986,00")
+        passagem = 986
 '''
 cidade = input("Informe a cidade de destino:\n")
 
@@ -181,19 +186,26 @@ custo_aviao(cidade)
 - Retorne o custo.
 '''
 def custo_carro(dias):
+    global custo_do_carro
+    global custo_com_desconto
     custo_do_carro = dias * 40
     if (dias >= 7 ):
         custo_com_desconto = custo_do_carro - 50
         print(f"O custo do alugue do carro por {dias} dias é de R${custo_com_desconto:.2f}")
     elif (dias >= 3 and dias < 7):
         custo_com_desconto = custo_do_carro - 20
-        print(f"O custo do alugue do carro por {dias} dias é de R${custo_do_carro:.2f}")
+        print(f"O custo do alugue do carro por {dias} dias é de R${custo_com_desconto:.2f}")
+    else:
+        custo_com_desconto = custo_do_carro
+        print(f"O custo do alugue do carro por {dias} dias é de R${custo_com_desconto:.2f}")
+
 '''
+
 dias = int(input("Por quantos dias você quer alugar o carro?\n"))
 
 custo_carro(dias)
-
-
+'''
+'''
 Cálculo Total
 4 - Agora com essas três funções criadas, declare uma função que receba a cidade e quantidade de dias e retorne o custo total da viagem.
 - Reutilize as funções já criadas.
@@ -204,9 +216,17 @@ cidade = input("Informe a cidade de destino:\n")
 dias = int(input("Por quantos dias você quer alugar o carro?\n"))
 noites = int(input("Quantas noite você passará no hotel:\n"))
 def custoTotal(cidade, dias):
-    custo_aviao(cidade)
     custo_carro(dias)
+    custo_aviao(cidade)
+    def custo_hotel(noites):
+        global custo_noites
+        custo_noites = noites * 140
+        print(f"Ok! então o custo total do hotel será de:\nR${(custo_noites):.2f}")
+
     custo_hotel(dias)
+
+    custo_total = custo_com_desconto + passagem + custo_noites
+    print(f"o total da viajem será de: R${custo_total:.2f}")
 
 custoTotal(cidade,dias)
 
