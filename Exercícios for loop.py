@@ -151,14 +151,15 @@ for dez1 in range(1,61):
 
 
 # Desafio nº 1 
-
-for dupla in range(10,100):
-    for dupla1 in range(10,100):
-        numero = str(dupla) + str(dupla1)
-        num_int = int(numero)
-        soma = dupla + dupla1
-        if soma ** 2 == num_int:
-            print(num_int)
+def duplaNumeros():
+    for dupla in range(10,100):
+        for dupla1 in range(10,100):
+            numero = str(dupla) + str(dupla1)
+            num_int = int(numero)
+            soma = dupla + dupla1
+            if soma ** 2 == num_int:
+                print(num_int)
+duplaNumeros()
 
 # Desafio nº 2
 
