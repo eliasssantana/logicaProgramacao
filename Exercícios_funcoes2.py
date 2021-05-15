@@ -1,6 +1,6 @@
 import datetime
 #Exércicio nº1
-'''
+
 def numero(n1,n2):
     min = n1
     if n2 < min:
@@ -71,73 +71,29 @@ ficha(nome,gols)
 
 #Exercício nº 6
 
-def notasProva(nota1,nota2,nota3):
-    media_total = (nota1 + nota2 + nota3) / 3
-    if (nota1 < nota2 and nota1 < nota3):
-        nota_menor = nota1
-        nota_maior1 = nota2
-        nota_maior2 = nota3
-    elif ( nota2 < nota3 and nota2 < nota1):
-        nota_menor = nota2
-        nota_maior1 = nota1
-        nota_maior2 = nota3
-    elif ( nota3 < nota1 and nota3 < nota2):
-        nota_menor = nota3
-        nota_maior1 = nota2
-        nota_maior2 = nota1
-    elif (nota1 == nota2 and nota1 < nota3):
-        nota_menor = nota1
-        nota_maior1 = nota3
-        nota_maior2 = nota3
-    elif (nota1 == nota2 and nota1 > nota3):
-        nota_menor = nota3
-        nota_maior1 = nota1
-        nota_maior2 = nota1
-    elif ( nota2 == nota3 and nota2 < nota1):
-        nota_menor = nota2
-        nota_maior1 = nota1
-        nota_maior2 = nota1
-    elif ( nota2 == nota3 and nota2 > nota1):
-        nota_menor = nota1
-        nota_maior1 = nota2
-        nota_maior2 = nota2
-    elif ( nota3 == nota1 and nota3 < nota2):
-        nota_menor = nota3
-        nota_maior1 = nota2
-        nota_maior2 = nota2
-    elif ( nota3 == nota1 and nota3 > nota2):
-        nota_menor = nota2
-        nota_maior1 = nota3
-        nota_maior2 = nota3
-    elif (nota1 == nota2 and nota1 == nota3):
-        nota_menor = nota1
-        nota_maior1 = nota1
-        nota_maior2 = nota1
-    elif ( nota2 == nota3 and nota2 == nota1):
-        nota_menor = nota2
-        nota_maior1 = nota2
-        nota_maior2 = nota2
-    elif ( nota3 == nota1 and nota3 == nota2):
-        nota_menor = nota3
-        nota_maior1 = nota3
-        nota_maior2 = nota3
-    media_alta = (nota_maior1 + nota_maior2) / 2
-    print(f"Média coma as três provas: {media_total:.1f}")
-    print(f"Média das maiores notas obtidas: {media_alta:.1f}")
-    print(f"Suas nota maior é de {nota_maior2} e nota menor {nota_menor}")
-
-
 nota1 = float(input("Digite a primeira nota:\n"))
 nota2 = float(input("Digite a segunda nota:\n"))
 nota3 = float(input("Digite a terceira nota:\n"))
 
+def notasProva(nota1,nota2,nota3):
+    notas = [nota1,nota2,nota3]
+    maior_nota1 = max(notas)
+    menor_nota = min(notas)
+    for nota in notas:
+        if nota < maior_nota1 and nota > menor_nota:
+            maior_nota2 = nota
+    media_total = (nota1 + nota2 + nota3) / 3
+    media_alta = (maior_nota1 + maior_nota2) / 2
+    print(f"Média coma as três provas: {media_total:.1f}")
+    print(f"Média das maiores notas obtidas: {media_alta:.1f}")
+    print(f"Suas nota maior é de {maior_nota1} e nota menor {menor_nota}")
+
 notasProva(nota1,nota2,nota3)
-'''
 
-# DESAFIO 
+
+# PROJETO 
 
 '''
-Hospedagem
 1 - Crie uma função chamada 'custo_hotel' que receba um parâmetro (argumento) chamado 'noites' e retorne o custo total do hotel, sendo que 1 noite custa R$ 140,00.
 
 '''
@@ -148,7 +104,6 @@ noites = int(input("Quantas noite você passará no hotel:\n"))
 
 custo_hotel(noites)
 
-Passagem
 2 - Crie uma função chamada 'custo_aviao' que receba o nome da cidade e retorne o custo da passagem de avião, sendo que passagem para:
 - São Paulo custa R$ 312,00;
 - Porto Alegre custa R$ 447,00;
@@ -206,12 +161,13 @@ dias = int(input("Por quantos dias você quer alugar o carro?\n"))
 custo_carro(dias)
 '''
 '''
-Cálculo Total
 4 - Agora com essas três funções criadas, declare uma função que receba a cidade e quantidade de dias e retorne o custo total da viagem.
 - Reutilize as funções já criadas.
 - Exiba o total da viagem chamando apenas a nova função declarada!
 
 '''
+
+
 cidade = input("Informe a cidade de destino:\n")
 dias = int(input("Por quantos dias você quer alugar o carro?\n"))
 noites = int(input("Quantas noite você passará no hotel:\n"))
@@ -230,3 +186,26 @@ def custoTotal(cidade, dias):
 
 custoTotal(cidade,dias)
 
+'''
+5 - Modifique essa nova função criada e adicione um terceiro argumento: 'gastos_extras' e some esse valor ao total da viagem.
+Exiba no console o custo total de uma viagem de 12 dias para 'Manaus' gastando R$ 800,00 adicionais.
+
+'''
+
+cidade = input("Informe a cidade de destino:\n")
+dias = int(input("Por quantos dias você quer alugar o carro?\n"))
+noites = int(input("Quantas noite você passará no hotel:\n"))
+gastos = float(input("Digite seus gastos extras:\n"))
+def custoTotal(cidade, dias, gastos_extras):
+    custo_carro(dias)
+    custo_aviao(cidade)
+    def custo_hotel(noites):
+        global custo_noites
+        custo_noites = noites * 140
+        print(f"Ok! então o custo total do hotel será de:\nR${(custo_noites):.2f}")
+    custo_hotel(dias)
+
+    custo_total = custo_com_desconto + passagem + custo_noites + gastos_extras
+    print(f"o total da viajem será de: R${custo_total:.2f}, incluindo os gastos extras de R${gastos_extras:.2f}.")
+
+custoTotal(cidade,dias,gastos)

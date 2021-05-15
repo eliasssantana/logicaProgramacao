@@ -45,30 +45,5 @@ cpo = 0
 qtd = int(input('quantidade de elementos impares na lista: '))
 array = []
 '''
-'''
-while cpo == 0:
-  while cont <= qtd:
-    array.append(num)
-    cont+=1
-    num+=2
 
-  print()
-  print(f'lista de elementos: {array}')
 
-  for eachNum in array:
-    revertido = sorted(array, reverse= True)
-  print(f'lista invertida: {revertido}',end=' ')
-
-  resp = input('Deseja continuar?[s/n]: ').lower().trim()
-
-  if resp == 's':
-    cpo = 0
-    qtd = int(input('quantidade de elementos impares na lista: '))
-  elif resp == 'n':
-    cpo = 1
-  else:
-    print('resposta invalida...')
-    resp = input('Deseja continuar?[s/n]: ').lower().strip()[0]
-
-print('fim do programa')
-'''

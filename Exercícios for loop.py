@@ -153,7 +153,6 @@ for dez1 in range(1,61):
 # Desafio nº 1  
 
 
-
 def duplaNumeros():
     for dupla in range(10,100):
         for dupla1 in range(1,100):
